@@ -1,0 +1,134 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Salut",
+        "Comment allez-vous",
+        "Est-ce que quelqu'un est là",
+        "t'es là",
+        "Bonjour",
+        "Bonsoir",
+        "Salem"
+      ],
+      "responses": [
+
+        "Salut, que puis-je faire pour vous?",
+        "Salut, comment puis-je vous aider?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye","Au revoir", "A plus tard", "a plus"],
+      "responses": [
+        "A plus tard, merci de votre visite",
+        "Passe une bonne journee",
+        "Au revoir! Revenez bientot."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot", "Merci", "Merci infiniment", "C'est utile", "Merci beaucoup"],
+      "responses": ["Heureux de vous aider!", "A tout moment!", "Avec plaisir"]
+    },
+    {
+      "tag": "code article manuellement",
+      "patterns": [
+        "code Article",
+        "librement",
+        "manuellement"
+      ],
+      "responses": [
+        "Vous pouvez saisir librement un code Article lors de la creation d'un nouvel Article. Pour cela allez dans  Adminitration> Configuration> Parmetres generaux> Genral> Article> Mettre le parametre ACASL (Article : code article saisie libre) a TRUE "
+      ]
+    },
+    {
+      "tag": "code à barre",
+      "patterns": [
+        "oblligatoire",
+        "code a barre",
+        "code barre",
+        "necissaire",
+        "modifier",
+        "rendre"
+      ],
+      "responses": [
+
+        "Oui, vous allez dans Adminitration> Configuration >Parmetres generaux> General> Article> Mettre le parametre ARTCBON (Article : Code barre article obligatoire) a TRUE"
+      ]
+    },
+    {
+      "tag": "tracabilite article",
+      "patterns": [
+        "par numero de serie",
+        "par numéro de serie",
+        "par lot",
+        "gerer article",
+        "gestion des articles",
+        "gestion article"
+      ],
+      "responses": [
+        "Oui, dans la fiche Article> Onglet Tracabilite> Code Tracabilite   "
+      ]
+    },
+    {
+      "tag": "groupe d'article",
+      "patterns": [
+        "groupe d'article",
+        "ajouter groupe",
+        "groupes d'articles",
+        "catégories d'articles",
+        "categories d'articles",
+        "categorie d'article",
+        "ajouter categorie"
+      ],
+      "responses": [
+        "Allez dans Adminitration> Configuration> Groupe et Categorie Article. Saisissez un nouveau groupe ensuite cliquez dessus pour rajouter les categories qui lui sont rattachees"
+      ]
+    },
+    {
+      "tag": "taux de tva",
+      "patterns": [
+        "taux de tva",
+        "tva",
+        "nouveau"
+      ],
+      "responses": [
+        "Allez dans Adminitration> Configuration> TVA"
+      ]
+    },
+    {
+      "tag": "valeur du timbre",
+      "patterns": [
+        "valeur du timbre",
+        "timbre",
+        "modifier valeur du timbre",
+        "changer valeur du timbre"
+      ],
+      "responses": [
+        "Allez dans Adminitration> Configuration> Genreal> Mettre le parametre TMBR (General : Timbre) a la bonne valeur"
+      ]
+    },
+    {
+      "tag": "article par taille et couleur",
+      "patterns": [
+        "article par taille et couleur",
+        "article par taille ",
+        "article par couleur",
+        "article par",
+        "par variente",
+        "par taille",
+        "par couleur"
+      ],
+      "responses": [
+        "Allez dans Adminitration> Configuration> Article> Varinates et Valeurs variantes. Creez les variantes Couleur et Taille. En cliquant dessus, vous pouvez rajouter les differentes valeurs. Dans la fiche Article, allez dans variantes> Parametrage pour selectionnes les variantes que vous souhaitez creer pour votre Article."
+      ]
+    }
+  ]
+}
