@@ -1,6 +1,6 @@
 import numpy as np
 import json
-
+import pymongo
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
@@ -8,8 +8,12 @@ from torch.utils.data import Dataset, DataLoader
 from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
 
-with open('intents.json', 'r') as f:
-    intents = json.load(f)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+myclient = pymongo.MongoClient("mongodb+srv://chedlywerda:oIDqDC7FfNABYLlV@cluster0.fjsrksp.mongodb.net/?retryWrites=true&w=majority")
+db = myclient.ChatBot
+collection = db.QR
+intents=collection.find_one()
 
 all_words = []
 tags = []
