@@ -13,6 +13,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 myclient = pymongo.MongoClient("mongodb+srv://chedlywerda:oIDqDC7FfNABYLlV@cluster0.fjsrksp.mongodb.net/?retryWrites=true&w=majority")
 db = myclient.ChatBot
 collection = db.QR
+collect = db.Convs
 
 intents = collection.find_one()
 
@@ -48,9 +49,14 @@ def get_response(msg):
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                return random.choice(intent['responses'])
-    
-    return "Je ne comprends pas..."
+                conversation = {"user_input": sentence, "bot_response": random.choice(intent['responses'])}
+                collect.insert_one(conversation)
+                return conversation["bot_response"]
+
+    conversation = {"user_input": sentence, "bot_response": "Je ne comprends pas..."}
+    collect.insert_one(conversation)
+    return conversation["bot_response"]
+
 
 
 if __name__ == "__main__":
