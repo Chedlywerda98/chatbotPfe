@@ -10,12 +10,14 @@ from nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-myclient = pymongo.MongoClient("mongodb+srv://chedlywerda:oIDqDC7FfNABYLlV@cluster0.fjsrksp.mongodb.net/?retryWrites=true&w=majority")
+myclient = pymongo.MongoClient("mongodb+srv://chedlywerda:oIDqDC7FfNABYLlV@cluster0.fjsrksp.mongodb.net/ChatBot")
 db = myclient.ChatBot
 collection = db.QR
 collect = db.Convs
 
-intents = collection.find_one()
+intents = []
+for doc in collection.find():
+    intents += doc['intents']
 
 FILE = "data.pth"
 data = torch.load(FILE)
@@ -47,7 +49,7 @@ def get_response(msg):
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
     if prob.item() > 0.75:
-        for intent in intents['intents']:
+        for intent in intents:
             if tag == intent["tag"]:
                 conversation = {"user_input": sentence, "bot_response": random.choice(intent['responses'])}
                 collect.insert_one(conversation)
@@ -68,4 +70,3 @@ if __name__ == "__main__":
 
         resp = get_response(sentence)
         print(resp)
-
