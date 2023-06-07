@@ -3,7 +3,7 @@ import pymongo
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-
+import random
 from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
 
@@ -102,6 +102,7 @@ for epoch in range(num_epochs):
 
 print(f'final loss: {loss.item():.4f}')
 
+
 data = {
     "model_state": model.state_dict(),
     "input_size": input_size,
@@ -115,3 +116,4 @@ FILE = "data.pth"
 torch.save(data, FILE)
 
 print(f'training complete. file saved to {FILE}')
+
