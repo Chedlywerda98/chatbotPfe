@@ -11,6 +11,9 @@ CORS(app)
 def train():
     subprocess.run(["python", "train.py"])
 
+def chat():
+    subprocess.run(["python", "chat.py"])
+
 # Email Configuration
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
@@ -43,7 +46,6 @@ def index_get():
 def run_app_handler():
     train()
     return jsonify({'message': 'App.py code executed successfully!'})
-
 
 
 @app.route("/predict", methods=['POST'])
