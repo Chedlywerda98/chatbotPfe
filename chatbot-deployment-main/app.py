@@ -5,8 +5,17 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import subprocess
+import importlib
 app = Flask(__name__)
 CORS(app)
+
+def reload_module(module_name):
+    try:
+        # Reload the module
+        importlib.reload(module_name)
+        print(f"{module_name.__name__} reloaded successfully.")
+    except Exception as e:
+        print(f"Error reloading {module_name.__name__}: {str(e)}")
 
 def train():
     subprocess.run(["python", "train.py"])
@@ -45,6 +54,16 @@ def index_get():
 @app.route('/runapp', methods=['POST'])
 def run_app_handler():
     train()
+    module_name = 'chat'
+    try:
+        # Import the module
+        import chat
+        # Reload the module
+        reload_module(chat)
+
+    except ImportError:
+        print(f"Module {module_name} not found.")
+
     return jsonify({'message': 'App.py code executed successfully!'})
 
 
